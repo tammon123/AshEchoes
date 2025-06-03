@@ -1,0 +1,110 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "欢迎你~小监督",
+				"renderer": "webview"
+			}
+		},
+		{
+			"path": "pages/thanks/thanks",
+			"style": {
+				"navigationBarTitleText": "致谢",
+				"renderer": "webview"
+			}
+		},
+		{
+			"path": "pages/chouka/chouka",
+			"style": {
+				"navigationBarTitleText": "卡池分析"
+			}
+		},
+		{
+			"path": "pages/suggest/suggest",
+			"style": {
+				"navigationBarTitleText": "意见反馈"
+			}
+		},
+		{
+			"path": "pages/ranks/ranks",
+			"style": {
+				"navigationBarTitleText": "伤害计算",
+				"renderer": "webview"
+			}
+		},
+		{
+			"path": "pages/peidui/peidui",
+			"style": {
+				"navigationBarTitleText": "配队"
+			}
+		},
+		{
+			"path": "pages/peidui/share/share",
+			"style": {
+				"navigationBarTitleText": "分享"
+			}
+		},
+		{
+			"path": "pages/wiki/wiki-char/wiki-char",
+			"style": {
+				"navigationBarTitleText": "角色WIKI"
+			}
+		},
+		{
+			"path": "pages/wiki/memory-wiki/memory-wiki",
+			"style": {
+				"navigationBarTitleText": "烙痕wiki"
+			}
+		},
+		{
+			"path": "pages/guide/guide",
+			"style": {
+				"navigationBarTitleText": "萌新攻略·配队",
+				"renderer": "webview"
+			}
+		},
+		{
+			"path" : "pages/notice/notice",
+			"style" : 
+			{
+				"navigationBarTitleText" : "更新日志"
+			}
+		},
+		{
+			"path" : "pages/peidui/memory-director/memory-director",
+			"style" : 
+			{
+				"navigationBarTitleText" : "监督刻印"
+			}
+		},
+		{
+			"path" : "pages/story/story",
+			"style" : 
+			{
+				"navigationBarTitleText" : "剧情线"
+			}
+		},
+		{
+			"path" : "pages/story/storyDesc/storyDesc",
+			"style" : 
+			{
+				"navigationBarTitleText" : "故事详情"
+			}
+		}
+	],
+	"globalStyle": {
+		// #ifdef WEB
+		"navigationStyle": "custom",
+		// #endif
+		// #ifdef MP-WEIXIN
+		"navigationStyle": "default",
+		// #endif
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "你来啦~小监督",
+		"navigationBarBackgroundColor": "#e9edef",
+		"backgroundColor": "#e9edef",
+		"rpxCalcMaxDeviceWidth": 500
+	},
+	"uniIdRouter": {}
+}

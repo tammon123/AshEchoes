@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.mapper.StoryMapper">
+    
+    <resultMap type="Story" id="StoryResult">
+        <result property="id"    column="id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="banner"    column="banner"    />
+        <result property="sort"    column="sort"    />
+        <result property="title"    column="title"    />
+        <result property="type"    column="type"    />
+        <result property="chars"    column="chars"    />
+        <result property="sTime"    column="s_time"    />
+        <result property="world"    column="world"    />
+        <result property="author"    column="author"    />
+        <result property="otext"    column="otext"    />
+        <result property="desc"    column="desc"    />
+        <result property="summary"    column="summary"    />
+    </resultMap>
+
+    <sql id="selectStoryVo">
+        select id,parent_id, sort,banner, title, type, chars, s_time, world, author, `desc`,otext, summary from story
+    </sql>
+
+    <sql id="selectStoryListVo">
+        select id,parent_id,banner, sort, title, type, chars, s_time, world, author from story
+    </sql>
+
+    <select id="selectStoryList" parameterType="Story" resultMap="StoryResult">
+        <include refid="selectStoryListVo"/>
+        <where>  
+            <if test="sort != null "> and sort = #{sort}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="chars != null  and chars != ''"> and chars = #{chars}</if>
+            <if test="sTime != null  and sTime != ''"> and s_time = #{sTime}</if>
+            <if test="world != null  and world != ''"> and world = #{world}</if>
+            <if test="author != null  and author != ''"> and author = #{author}</if>
+        </where>
+        order by `sort`, id
+    </select>
+    
+    <select id="selectStoryById" parameterType="Long" resultMap="StoryResult">
+        <include refid="selectStoryVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertStory" parameterType="Story" useGeneratedKeys="true" keyProperty="id">
+        insert into story
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sort != null">sort,</if>
+            <if test="parentId != null "> parent_id,</if>
+            <if test="banner != null "> banner,</if>
+            <if test="title != null">title,</if>
+            <if test="type != null">type,</if>
+            <if test="chars != null">chars,</if>
+            <if test="sTime != null">s_time,</if>
+            <if test="world != null">world,</if>
+            <if test="author != null">author,</if>
+            <if test="desc != null">`desc`,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="summary != null">summary,</if>
+            <if test="otext != null">otext,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sort != null">#{sort},</if>
+            <if test="parentId != null "> #{parentId},</if>
+            <if test="banner != null "> #{banner},</if>
+            <if test="title != null">#{title},</if>
+            <if test="type != null">#{type},</if>
+            <if test="chars != null">#{chars},</if>
+            <if test="sTime != null">#{sTime},</if>
+            <if test="world != null">#{world},</if>
+            <if test="author != null">#{author},</if>
+            <if test="desc != null">#{desc},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="summary != null">#{summary},</if>
+            <if test="otext != null">#{otext},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStory" parameterType="Story">
+        update story
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="parentId != null "> parent_id = #{parentId},</if>
+            <if test="banner != null "> banner = #{banner},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="chars != null">chars = #{chars},</if>
+            <if test="sTime != null">s_time = #{sTime},</if>
+            <if test="world != null">world = #{world},</if>
+            <if test="author != null">author = #{author},</if>
+            <if test="desc != null">`desc` = #{desc},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="summary != null">summary = #{summary},</if>
+            <if test="otext != null">otext = #{otext},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteStoryById" parameterType="Long">
+        delete from story where id = #{id}
+    </delete>
+
+    <delete id="deleteStoryByIds" parameterType="String">
+        delete from story where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

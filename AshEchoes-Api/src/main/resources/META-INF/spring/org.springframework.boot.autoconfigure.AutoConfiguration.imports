@@ -1,0 +1,2 @@
+#动态数据源没有做springboot3版本的适配，需要手动引入
+com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration

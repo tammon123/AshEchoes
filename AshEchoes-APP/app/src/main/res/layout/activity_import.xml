@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffe9edef"
+    android:id="@+id/import_activity"
+    android:orientation="horizontal"
+    tools:context=".ImportActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="0sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffef481a"
+            android:text="交流反馈QQ群：865686593"
+            android:layout_marginBottom="10dp"
+            android:textSize="22sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffef481a"
+            android:text="微信公众号：《白荆小助手》"
+            android:layout_marginBottom="10dp"
+            android:textSize="22sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ffef481a"
+            android:text="因官网的限制，当天的抽卡记录，需要第二天9点左右才能导入~"
+            android:layout_marginBottom="0dp"
+            android:textSize="22sp" />
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="删除并重新导入数据"
+            android:textColor="#ff000000" />
+        <WebView
+            android:id="@+id/webviewzl"
+            android:layout_width="700dp"
+            android:layout_height="450dp"
+            tools:ignore="WebViewLayout" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

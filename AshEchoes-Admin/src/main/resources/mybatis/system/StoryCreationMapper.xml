@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.mapper.StoryCreationMapper">
+    
+    <resultMap type="StoryCreation" id="StoryCreationResult">
+        <result property="id"    column="id"    />
+        <result property="storyId"    column="story_id"    />
+        <result property="nextScId"    column="next_sc_id"    />
+        <result property="lastScId"    column="last_sc_id"    />
+        <result property="content"    column="content"    />
+    </resultMap>
+
+    <sql id="selectStoryCreationVo">
+        select id, story_id, next_sc_id, last_sc_id, content from story_creation
+    </sql>
+
+    <select id="selectStoryCreationList" parameterType="StoryCreation" resultMap="StoryCreationResult">
+        <include refid="selectStoryCreationVo"/>
+        <where>  
+            <if test="storyId != null "> and story_id = #{storyId}</if>
+            <if test="nextScId != null "> and next_sc_id = #{nextScId}</if>
+            <if test="lastScId != null "> and last_sc_id = #{lastScId}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+        </where>
+    </select>
+    
+    <select id="selectStoryCreationById" parameterType="Long" resultMap="StoryCreationResult">
+        <include refid="selectStoryCreationVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertStoryCreation" parameterType="StoryCreation" useGeneratedKeys="true" keyProperty="id">
+        insert into story_creation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="storyId != null">story_id,</if>
+            <if test="nextScId != null">next_sc_id,</if>
+            <if test="lastScId != null">last_sc_id,</if>
+            <if test="content != null">content,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="storyId != null">#{storyId},</if>
+            <if test="nextScId != null">#{nextScId},</if>
+            <if test="lastScId != null">#{lastScId},</if>
+            <if test="content != null">#{content},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStoryCreation" parameterType="StoryCreation">
+        update story_creation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="storyId != null">story_id = #{storyId},</if>
+            <if test="nextScId != null">next_sc_id = #{nextScId},</if>
+            <if test="lastScId != null">last_sc_id = #{lastScId},</if>
+            <if test="content != null">content = #{content},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteStoryCreationById" parameterType="Long">
+        delete from story_creation where id = #{id}
+    </delete>
+
+    <delete id="deleteStoryCreationByIds" parameterType="String">
+        delete from story_creation where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
