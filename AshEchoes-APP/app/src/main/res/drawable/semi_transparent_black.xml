@@ -1,4 +1,0 @@
-<!-- res/drawable/semi_transparent_black.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#80000000" /> <!-- 半透明黑色 (#AARRGGBB) -->
-</shape>
