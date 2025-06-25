@@ -13,6 +13,7 @@
 		</view>
 		<view class="story-right-tips">
 			<view class="srt-content">
+				<view class="srtt">↓可点击下方词条筛选↓</view>
 				<view class="srtc-items" v-for="item in Object.keys(storyTypeColor)" @click="chooseStoryType(item)">
 					<view class="srtci-left"
 						:style="{'border': '4rpx solid '+storyTypeColor[item].color, 'backgroundColor':storyTypeColor[item].choose?storyTypeColor[item].color:''}">
@@ -72,7 +73,7 @@
 
 	function showContentDialog(item, eid) {
 		let type = filterStoryTypes()
-		proxy.$nextTick(()=>{
+		proxy.$nextTick(() => {
 			const element = document.getElementById('parant-story-body');
 			store.$patch({
 				type: type,
@@ -173,19 +174,19 @@
 		},
 		'间章剧情': {
 			color: '#7abd9a',
-			choose: true
+			choose: false
 		},
 		'幕间剧情': {
 			color: '#80a492',
-			choose: true
+			choose: false
 		},
 		'角色故事': {
 			color: '#87c0ca',
-			choose: true
+			choose: false
 		},
 		'其他剧情': {
 			color: '#c0d695',
-			choose: true
+			choose: false
 		}
 	})
 </script>
@@ -232,14 +233,17 @@
 			height: 362rpx;
 			width: 100%;
 			max-width: 750rpx;
-			top: 98rpx;
+			top: 68rpx;
 			display: flex;
 			flex-direction: row-reverse;
 			padding: 20rpx;
 			box-sizing: border-box;
 			background-color: $bgColor;
 			z-index: 1;
-
+			.srtt{
+				line-height: 40rpx;
+				color:orangered;
+			}
 			.srt-content {
 				padding: 10rpx;
 				box-sizing: border-box;
@@ -262,6 +266,7 @@
 						align-items: center;
 						justify-content: center;
 						font-weight: 600;
+						border-color: #ababab !important;
 					}
 
 					.srtci-right {
